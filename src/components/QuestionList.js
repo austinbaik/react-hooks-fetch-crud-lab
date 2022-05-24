@@ -1,10 +1,23 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import QuestionItem from "./QuestionItem";
 
-function QuestionList() {
+
+function QuestionList({ initializeQDB, updatedStateDelete, updateAnswerChange}) {
+
+console.log(initializeQDB);
+  
+  const qsForForm = initializeQDB.map(question => {
+    return (
+      <QuestionItem key={question.id} question={question} updatedStateDelete={updatedStateDelete} updateAnswerChange={updateAnswerChange}/>
+    )
+  }
+  )
+
+
   return (
     <section>
       <h1>Quiz Questions</h1>
-      <ul>{/* display QuestionItem components here after fetching */}</ul>
+      <ul>{qsForForm} </ul>
     </section>
   );
 }
